@@ -1,0 +1,13 @@
+{
+  "name": "slack",
+  "version": "0.1.0",
+  "description": "Slack plugin — register a per-persona Slack app to drink the workspace firehose; agent-side filter for noise.",
+  "author": {
+    "name": "Tim Garthwaite",
+    "url": "https://github.com/mividtim"
+  },
+  "license": "MIT",
+  "keywords": ["slack", "webhook", "mcp", "firehose"],
+  "postInstall": "bun install",
+  "postUpdate": "bun install"
+}
