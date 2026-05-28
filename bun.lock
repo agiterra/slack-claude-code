@@ -5,6 +5,7 @@
     "": {
       "name": "@agiterra/slack-claude-code",
       "dependencies": {
+        "@agiterra/mcp-tee": "agiterra/mcp-tee#v0.1.0",
         "@agiterra/slack-tools": "agiterra/slack-tools#v0.2.0",
         "@agiterra/wire-tools": "agiterra/wire-tools#v2.0.0",
         "@modelcontextprotocol/sdk": "^1.0.0",
@@ -15,6 +16,8 @@
     },
   },
   "packages": {
+    "@agiterra/mcp-tee": ["@agiterra/mcp-tee@github:agiterra/mcp-tee#ecdf634", { "bin": { "mcp-tee": "./bin/mcp-tee.sh" } }, "agiterra-mcp-tee-ecdf634", "sha512-JWjvscg2DDNrBidXKPTveVQQmTI2iWC3KnsexKy45ZiahQNyo0tbQXkCn/r1FQrt4OPO9na8capDbc7GdF/bRw=="],
+
     "@agiterra/slack-tools": ["@agiterra/slack-tools@github:agiterra/slack-tools#f80fc7e", { "dependencies": { "@agiterra/wire-tools": "agiterra/wire-tools#v2.0.0", "@modelcontextprotocol/sdk": "^1.29.0" } }, "agiterra-slack-tools-f80fc7e", "sha512-O28IoGrtGOVd8zpvvyWNAtmvG4nQ4M5SYReoHLwDUxwJYmNR250XnTgI0ScnAFv/+YA3OHjZE6lMATyMu544cQ=="],
 
     "@agiterra/wire-tools": ["@agiterra/wire-tools@github:agiterra/wire-tools#e986537", { "dependencies": { "@modelcontextprotocol/sdk": "^1.29.0", "pino": "^10.3.1" } }, "agiterra-wire-tools-e986537", "sha512-O4a9aIyCXBx2ZdJebyBVBWEy968kgmY9682+46Va7PnxscISnfVMvKMiW1DLXEN0oEXP5rmEV/EIIdEDZ8zjoA=="],
