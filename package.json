@@ -1,6 +1,6 @@
 {
   "name": "@agiterra/slack-claude-code",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Slack plugin for Claude Code agents — agent-scoped firehose with agent-side filtering.",
   "license": "MIT",
   "type": "module",
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@agiterra/mcp-tee": "agiterra/mcp-tee#v0.1.0",
-    "@agiterra/slack-tools": "agiterra/slack-tools#v0.4.0",
+    "@agiterra/slack-tools": "agiterra/slack-tools#v0.5.0",
     "@agiterra/wire-tools": "agiterra/wire-tools#v2.0.0",
     "@modelcontextprotocol/sdk": "^1.0.0"
   },

@@ -25,6 +25,15 @@ Each agent persona maps 1:1 to its own Slack app. Workflow:
 
 The agent's wire channel `webhook.slack` then carries every event. Filter noise via `register_slack_app({filter: "..."})`, or set `SLACK_BOT_USER_ID` to drop the bot's own echoes by default.
 
+### Reliability: dedup + immediate ACK
+
+Slack expects a `2xx` within ~3s or it re-delivers an event up to 3× (`X-Slack-Retry-Reason: http_timeout`). Under transient gateway latency that turns one event into 3–4 duplicates on the channel. Registrations from slack-tools ≥ v0.5.0 harden against this:
+
+- **`dedup: "payload.event_id"`** — Slack stamps every delivery (incl. retries) with the same top-level `event_id`. Wire keys idempotency on it and drops retries at the broker (`{duplicate:true}`), so a retry is never re-fanned to subscribers.
+- **`ack_early: true`** — Wire ACKs Slack's POST with `200` the instant the message is persisted, then fans out asynchronously (requires Wire with the `ack_early` webhook flag). This decouples Slack's retry clock from delivery latency, so timeouts (and thus retries) stop happening in the first place.
+
+Both ride the normal registration body, so a **fresh** registration is covered automatically. A webhook registered *before* the upgrade keeps its prior config until re-registered (idempotent re-registration leaves existing rows untouched — see below); an operator can also set the two columns on the live row directly.
+
 ### Omit the `workspace` param
 
 `SLACK_WORKSPACE` is the **single source of truth** for this persona's webhook identity. Call `register_slack_app()` with no `workspace` — it reads the env var. The same env value is what the plugin uses to heal the webhook on boot (below), so passing an explicit `workspace` risks registering a *second* webhook under a different label that diverges from the one the boot self-heal maintains. Only pass `workspace` to register an additional/ad-hoc workspace on purpose.
