@@ -1,6 +1,6 @@
 {
   "name": "@agiterra/slack-claude-code",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Slack plugin for Claude Code agents — agent-scoped firehose with agent-side filtering.",
   "license": "MIT",
   "type": "module",
